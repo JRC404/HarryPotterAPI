@@ -1,1 +1,14 @@
 <h1>You can find any character here.</h1>
+
+<ul>
+    {{#each data}}
+    <li>{{@key}} : {{this}}</li>
+    {{/each}}
+</ul>
+
+<form action="/characters" method="post">
+    <label for="character">Character: </label>
+    <input type="text" name="character">
+    <br>
+    <input type="submit" value="send">
+</form>

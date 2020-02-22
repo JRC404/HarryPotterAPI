@@ -36,9 +36,38 @@ app.get('/characters', (req, res)=> {
     res.render('characters')
 })
 
+app.post('/characters', async (req, res) => {
+    let characterChoice = req.body.character
+    console.log(characterChoice)
+
+    let data = await getHarryPotterData(characterChoice)
+    console.log(data)
+
+    let name = data.name;
+    let house = data.house;
+    let role = data.role;
+    let wand = data.wand;
+    console.log(name)
+    console.log(house)
+
+    res.render('characters', {
+        data: {
+            name,
+            house,
+            role,
+            wand
+        }
+    })
+})
+
 app.get('/houses', (req, res)=> {
     res.render('houses')
 })
+
+// app.post('/houses', (req, res) => {
+
+//     res.render('houses')
+// })
 
 app.listen(3001, () => {
     console.log('server listening on port 3000');

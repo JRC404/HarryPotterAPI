@@ -1,1 +1,14 @@
 <h1>You can find any house here.</h1>
+
+<ul>
+    {{#each data}}
+    <li>{{@key}} : {{this}}</li>
+    {{/each}}
+</ul>
+
+<form action="/houses" method="post">
+    <label for="houses">Houses: </label>
+    <input type="text" name="houses">
+    <br>
+    <input type="submit" value="send">
+</form>
