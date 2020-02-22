@@ -29,9 +29,16 @@ app.get('/', async (req, res) => {
     console.log(name);
     console.log(house);
     
-    
     res.render('index');
 });
+
+app.get('/characters', (req, res)=> {
+    res.render('characters')
+})
+
+app.get('/houses', (req, res)=> {
+    res.render('houses')
+})
 
 app.listen(3001, () => {
     console.log('server listening on port 3000');
