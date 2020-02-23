@@ -14,6 +14,8 @@ It is a testing project.
 
 ## Prerequisites
 
+To run this application, you'll need to do a few things. These are outlined below.
+
 ### Packages to install
 
 ```bash
