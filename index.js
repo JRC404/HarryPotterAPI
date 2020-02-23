@@ -18,6 +18,7 @@ app.engine('.hbs', hbs({
     defaultLayout: 'layout',
     extname: '.hbs'
 }));
+
 app.set('view engine', '.hbs');
 
 app.get('/', async (req, res) => {
@@ -70,6 +71,6 @@ app.get('/houses', (req, res)=> {
 // })
 
 app.listen(3001, () => {
-    console.log('server listening on port 3000');
+    console.log('server listening on port 3001');
     console.log(__dirname);
 });
