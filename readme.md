@@ -6,13 +6,11 @@ A test application with the Harry Potter API to display different endpoints.
 
 The application will allow the user to search for characters, houses, spells and the like. Why would you want to do this? Well, why not? Harry Potter is cool. 
 
-The user will eventually be able to log in and store information about themselves.
+The user will eventually be able to log in and store information about themselves. Sessions will be added to the project.
 
 ## Development
 
 This project will be being worked on alongside others, so development may not be as quick as other projects. 
-
-It is a testing project. 
 
 ## Prerequisites
 
