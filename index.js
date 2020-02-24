@@ -8,15 +8,19 @@ const HarryPotterData = require('./lib/getHarryPotter')
 const app = express();
 require('dotenv').config();
 
-// // MongoDB
+// MongoDB
+// requiring Mongoose to use with MongoDB
 const mongoose = require('mongoose');
+// requiring the schema created in user.js. This currently holds name, email & password.
 const UserSchema = require('./models/user');
 
+// connection to the MongoDB Atlas cluster. Password stored in .env and useUnifiedTopology fixes warning given without.
 mongoose.connect(`mongodb+srv://admin:${process.env.password}@usersignup-0cehi.mongodb.net/userdb?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 
+// create a user - hardcode.
 // const user = new UserSchema({
 //     name: 'dean',
 //     email: 'dean@dean.com',
@@ -24,6 +28,8 @@ mongoose.connect(`mongodb+srv://admin:${process.env.password}@usersignup-0cehi.m
 // })
 
 // user.save();
+
+// finding all users - https://mongoosejs.com/docs/queries.html will assist with this.
 UserSchema.find({}, (err, docs) => {
     console.log(docs);
 })
