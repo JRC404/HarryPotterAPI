@@ -3,9 +3,10 @@
 {{#if err}}
 <h1>{{err}}</h1>
 {{else}}
-<ul>
+<ul class="characters">
     {{#each data}}
     <li>{{@key}} : {{this}}</li>
+    <br>
     {{/each}}
 </ul>
 {{/if}}
