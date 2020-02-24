@@ -24,9 +24,9 @@ app.engine('.hbs', hbs({
 app.set('view engine', '.hbs');
 
 app.get('/', async (req, res) => {
-    let data = await HarryPotterData.getAllTheData();
+    // let data = await HarryPotterData.getAllTheData();
     // console.log(data)
-    fs.writeFileSync('./JsonFiles/HarryPotter.json', data)
+    // fs.writeFileSync('./JsonFiles/HarryPotter.json', data)
     // let name = data[0].name;
     // let house = data[0].house;
     // console.log(name);
