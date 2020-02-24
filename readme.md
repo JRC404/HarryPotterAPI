@@ -24,6 +24,7 @@ npm i express-handlebars
 npm i body-parser
 npm i path
 npm i request
+npm i mongoose
 ```
 
 ## API information
