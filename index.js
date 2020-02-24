@@ -30,9 +30,9 @@ mongoose.connect(`mongodb+srv://admin:${process.env.password}@usersignup-0cehi.m
 // user.save();
 
 // finding all users - https://mongoosejs.com/docs/queries.html will assist with this.
-UserSchema.find({}, (err, docs) => {
-    console.log(docs);
-})
+// UserSchema.find({}, (err, docs) => {
+//     console.log(docs);
+// })
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -81,6 +81,11 @@ app.post('/characters', async (req, res) => {
         let wand = data[0].wand;
         let school = data[0].school;
 
+        if (data[0].house == "Gryffindor") {
+            console.log("Hello, Gryffindor");
+        }
+
+
         res.render('characters', {
             data: {
                 name,
@@ -122,9 +127,7 @@ app.post('/houses', async (req, res) => {
             founder: item.founder
         })
     }
-
     console.log(houses);
-
 
     res.render('houses', {
         houses
@@ -158,7 +161,7 @@ app.post('/signup', (req, res) => {
         }
         res.render('account', {
             name,
-            title: 'Your Profile '
+            title: 'Your Profile'
         });
     })
 
@@ -173,5 +176,5 @@ app.post('/signup', (req, res) => {
 
 app.listen(3001, () => {
     console.log('server listening on port 3001');
-    console.log(__dirname);
+    // console.log(__dirname); // not necessary but kept for reference.
 });
