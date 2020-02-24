@@ -22,9 +22,9 @@ app.engine('.hbs', hbs({
 app.set('view engine', '.hbs');
 
 app.get('/', async (req, res) => {
-    // let data = await HarryPotterData.getAllTheData();
+    let data = await HarryPotterData.getAllTheData();
     // console.log(data)
-    // fs.writeFileSync('HarryPotter.json', data)
+    fs.writeFileSync('./JsonFiles/HarryPotter.json', data)
     // let name = data[0].name;
     // let house = data[0].house;
     // console.log(name);
@@ -43,7 +43,7 @@ app.post('/characters', async (req, res) => {
     console.log(characterChoice)
 
     let data = await HarryPotterData.getHarryPotterData(characterChoice)
-    fs.writeFileSync('ReturnedInfo.json', data)
+    fs.writeFileSync('./JsonFiles/ReturnedInfo.json', data)
     console.log(data)
 
     let name = data[0].name;
