@@ -27,6 +27,14 @@ npm i request
 npm i mongoose
 ```
 
+## Features to be added
+
+- [x] Signup
+- [] Login
+- [] Sessions
+- [] Profile data
+- [] Spell data
+
 ## API information
 
 <http://www.potterapi.com> is where the application gets its information from.
