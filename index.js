@@ -4,11 +4,30 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
-
-require('dotenv').config()
-
 const HarryPotterData = require('./lib/getHarryPotter')
 const app = express();
+require('dotenv').config();
+
+// // MongoDB
+const mongoose = require('mongoose');
+const UserSchema = require('./models/user');
+
+mongoose.connect(`mongodb+srv://admin:${process.env.password}@usersignup-0cehi.mongodb.net/userdb?retryWrites=true&w=majority`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
+// const user = new UserSchema({
+//     name: 'dean',
+//     email: 'dean@dean.com',
+//     password: 'password'
+// })
+
+// user.save();
+UserSchema.find({}, (err, docs) => {
+    console.log(docs);
+})
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({
@@ -27,7 +46,7 @@ app.get('/', async (req, res) => {
     // let data = await HarryPotterData.getAllTheData();
     // console.log(data)
     // fs.writeFileSync('./JsonFiles/HarryPotter.json', data)
-    // let name = data[0].name;
+    // let name = data.name;
     // let house = data[0].house;
     // console.log(name);
     // console.log(house);
@@ -41,6 +60,7 @@ app.get('/characters', (req, res) => {
 
 app.post('/characters', async (req, res) => {
     let characterChoice = encodeURIComponent(req.body.character)
+    // encodeURIComponent allows spaces for character names
 
     console.log(characterChoice)
 
@@ -104,6 +124,46 @@ app.post('/houses', async (req, res) => {
         houses
     })
 })
+
+app.get('/signup', (req, res) => {
+    res.render('signup');
+})
+
+app.post('/signup', (req, res) => {
+    let name = req.body.name;
+    let email = req.body.email;
+    let password = req.body.password;
+
+    UserSchema.findOne({
+        email
+    }, function (err, user) {
+        if (err) {
+            console.log('Error.')
+        }
+
+        if (user) {
+            let err = new Error(`${email}A user with that email has already registered.`)
+            err.status = 400;
+            console.log(err)
+            res.render('signup', {
+                errorMessage: `${email} already taken. A user with that email has already registered.`
+            })
+            return;
+        }
+        res.render('account', {
+            name,
+            title: 'Your Profile '
+        });
+    })
+
+    const user = new UserSchema({
+        name: name,
+        email: email,
+        password: password
+    });
+    user.save();
+
+});
 
 app.listen(3001, () => {
     console.log('server listening on port 3001');
