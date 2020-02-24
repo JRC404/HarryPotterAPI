@@ -33,7 +33,7 @@ li a:hover {
     background-color: purple;
 }
 
-.characters {
+.lists {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -41,7 +41,7 @@ li a:hover {
     background-color: white;
 }
 
-.characters a {
+.lists a {
     display: none;
 
 }

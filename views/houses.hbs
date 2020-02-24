@@ -1,9 +1,10 @@
 <h1>You can find any house here.</h1>
 
-<ul>
+<ul class="lists">
     {{#each houses}}
     {{#each this}}
     <li>{{@key}} : {{this}}</li>
+    <br>
     {{/each}}
     {{/each}}
 </ul>
