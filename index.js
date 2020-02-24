@@ -7,7 +7,7 @@ const fs = require('fs');
 
 require('dotenv').config()
 
-const getHarryPotterData = require('./lib/getHarryPotter')
+const HarryPotterData = require('./lib/getHarryPotter')
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -22,13 +22,13 @@ app.engine('.hbs', hbs({
 app.set('view engine', '.hbs');
 
 app.get('/', async (req, res) => {
-    let data = await getHarryPotterData();
+    // let data = await HarryPotterData.getAllTheData();
     // console.log(data)
-    fs.writeFileSync('HarryPotter.json', data)
-    let name = data.name;
-    let house = data.house;
-    console.log(name);
-    console.log(house);
+    // fs.writeFileSync('HarryPotter.json', data)
+    // let name = data[0].name;
+    // let house = data[0].house;
+    // console.log(name);
+    // console.log(house);
     
     res.render('index');
 });
@@ -38,18 +38,21 @@ app.get('/characters', (req, res)=> {
 })
 
 app.post('/characters', async (req, res) => {
-    let characterChoice = req.body.character
+    let characterChoice = encodeURIComponent(req.body.character)
+
     console.log(characterChoice)
 
-    let data = await getHarryPotterData(characterChoice)
+    let data = await HarryPotterData.getHarryPotterData(characterChoice)
+    fs.writeFileSync('ReturnedInfo.json', data)
     console.log(data)
 
-    let name = data.name;
-    let house = data.house;
-    let role = data.role;
-    let wand = data.wand;
-    console.log(name)
-    console.log(house)
+    let name = data[0].name;
+    let house = data[0].house;
+    let role = data[0].role;
+    let wand = data[0].wand;
+    
+    // console.log(name)
+    // console.log(house)
 
     res.render('characters', {
         data: {

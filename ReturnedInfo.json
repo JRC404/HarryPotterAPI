@@ -1,0 +1,18 @@
+[{
+    "_id": "5a1239c80f5ae10021650dad",
+    "name": "Ronald Weasley",
+    "role": "student",
+    "house": "Gryffindor",
+    "school": "Hogwarts School of Witchcraft and Wizardry",
+    "alias": "Ron",
+    "wand": "Willow, 14\", unicorn hair tail",
+    "boggart": "Aragog",
+    "patronus": "jack russell terrier",
+    "__v": 0,
+    "ministryOfMagic": false,
+    "orderOfThePhoenix": true,
+    "dumbledoresArmy": true,
+    "deathEater": false,
+    "bloodStatus": "pure-blood",
+    "species": "human"
+}]
