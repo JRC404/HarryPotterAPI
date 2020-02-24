@@ -13,7 +13,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: lightpink;
+    background-color: #9c1203;
 }
 
 li {
@@ -30,7 +30,7 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    background-color: purple;
+    background-color: #e3a000;
 }
 
 .lists {
@@ -44,4 +44,20 @@ li a:hover {
 .lists a {
     display: none;
 
+}
+
+.hufflepuff {
+    color: #e3a000;
+}
+
+.ravenclaw {
+    color: #00165e;
+}
+
+.gryffindor {
+    color: #9c1203;
+}
+
+.slytherin {
+    color: #033807;
 }
