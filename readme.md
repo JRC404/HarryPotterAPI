@@ -30,10 +30,8 @@ npm i mongoose
 ## Features to be added
 
 - [x] Signup
-- [] Login
-- [] Sessions
-- [] Profile data
-- [] Spell data
+- [ ] Login
+- [ ] Sessions
 
 ## API information
 
