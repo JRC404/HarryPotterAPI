@@ -36,6 +36,7 @@ li a:hover {
 .lists {
     list-style-type: none;
     margin: 0;
+    /* margin-left: 1vw; */
     padding: 0;
     overflow: hidden;
     background-color: white;
@@ -44,6 +45,28 @@ li a:hover {
 .lists a {
     display: none;
 
+}
+
+.button {
+    background-color: #9c1203;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+}
+
+input[type=text],
+input[type=password] {
+    width: 25%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
 }
 
 .hufflepuff {

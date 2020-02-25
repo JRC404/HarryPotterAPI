@@ -136,9 +136,9 @@ app.post('/houses', async (req, res) => {
 
 app.get('/spells', async (req, res) => {
     res.render('spells')
-    let data = await HarryPotterData.getSpellData();
+    // let data = await HarryPotterData.getSpellData();
     // fs.writeFileSync('./JsonFiles/spellData.json', data)
-    console.log(data);
+    // console.log(data);
 })
 
 app.get('/signup', (req, res) => {
