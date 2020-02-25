@@ -4,8 +4,18 @@
     display: inline;
 } */
 
+@font-face {
+    font-family: harryPotter;
+    src: url(./fonts/HARRYP.TTF);
+}
+
 body {
     margin: 0;
+}
+
+h1,
+h2 {
+    font-family: harryPotter;
 }
 
 ul {
