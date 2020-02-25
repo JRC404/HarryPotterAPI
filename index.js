@@ -71,8 +71,8 @@ app.post('/characters', async (req, res) => {
     console.log(characterChoice)
 
     let data = await HarryPotterData.getCharacterData(characterChoice)
-    fs.writeFileSync('./JsonFiles/ReturnedInfo.json', data)
-    console.log(data)
+    // fs.writeFileSync('./JsonFiles/ReturnedInfo.json', data)
+    // console.log(data)
 
     if (data[0]) {
         let name = data[0].name;
