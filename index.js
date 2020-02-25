@@ -141,6 +141,10 @@ app.get('/spells', async (req, res) => {
     // console.log(data);
 })
 
+app.get('/sortinghat', (req, res) => {
+    res.render('sortinghat');
+})
+
 app.get('/signup', (req, res) => {
     res.render('signup');
 })
