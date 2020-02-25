@@ -32,6 +32,7 @@ npm i mongoose
 - [x] Signup
 - [ ] Login
 - [ ] Sessions
+- [ ] Spells
 
 ## API information
 
