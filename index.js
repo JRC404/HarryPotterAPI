@@ -141,8 +141,25 @@ app.get('/spells', async (req, res) => {
     // console.log(data);
 })
 
-app.get('/sortinghat', (req, res) => {
-    res.render('sortinghat');
+app.get('/sortinghat', async (req, res) => {
+    let data = await HarryPotterData.getSortingHatData();
+    // fs.writeFileSync('./JsonFiles/sortingHat.json', data)
+    // console.log(data);
+    let house = data
+
+    if (house == "Slytherin") {
+        console.log("Oh, Slytherin.");
+    } else if (house == "Ravenclaw") {
+        console.log("Oh, Ravenclaw.");
+    } else if (house == "Hufflepuff") {
+        console.log("Oh, Hufflepuff.");
+    } else if (house == "Gryffindor") {
+        console.log("Oh, Gryffindor.");
+    }
+
+    res.render('sortinghat', {
+        house
+    });
 })
 
 app.get('/signup', (req, res) => {
