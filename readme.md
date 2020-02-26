@@ -19,20 +19,15 @@ To run this application, you'll need to do a few things. These are outlined belo
 ### Packages to install
 
 ```bash
-npm i express
-npm i express-handlebars
-npm i body-parser
-npm i path
-npm i request
-npm i mongoose
+npm i express express-handlebars body-parser path request mongoose
 ```
 
 ## Features to be added
 
 - [x] Signup
+- [x] Spells
 - [ ] Login
 - [ ] Sessions
-- [x] Spells
 
 ## API information
 
