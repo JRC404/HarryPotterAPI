@@ -3,8 +3,9 @@ const hbs = require('express-handlebars');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const fs = require('fs');
+// const fs = require('fs');
 const HarryPotterData = require('./lib/getHarryPotter')
+const HouseFunction = require('./lib/HouseFunction')
 const app = express();
 require('dotenv').config();
 
@@ -77,6 +78,7 @@ app.post('/characters', async (req, res) => {
     if (data[0]) {
         let name = data[0].name;
         let house = data[0].house;
+        let boggart = data[0].boggart;
         let role = data[0].role;
         let wand = data[0].wand;
         let school = data[0].school;
@@ -90,6 +92,7 @@ app.post('/characters', async (req, res) => {
             data: {
                 name,
                 house,
+                boggart,
                 role,
                 wand,
                 school
@@ -104,20 +107,17 @@ app.post('/characters', async (req, res) => {
 })
 
 app.get('/houses', async (req, res) => {
-
     res.render('houses')
 })
 
 app.post('/houses', async (req, res) => {
+    let input = req.body.houses
     let data = await HarryPotterData.getHouseData();
     // fs.writeFileSync('./JsonFiles/houseData.json', data)
-
     let houses = []
     /*
-    
     if item.name == Gryffindor then return the object information on Gryffindor 
     the reason for this, to allow the user to choose which house information they'd like to display.
-
     */
     for (const item of data) {
         houses.push({
@@ -127,11 +127,23 @@ app.post('/houses', async (req, res) => {
             founder: item.founder
         })
     }
-    console.log(houses);
+
+    for (const house of houses) {
+        if (house.name == input) {
+            res.render('houses', {
+                house
+            })
+            return
+        }
+    }
+
 
     res.render('houses', {
-        houses
+        err: 'Error.'
     })
+
+
+
 })
 
 app.get('/spells', async (req, res) => {
@@ -142,24 +154,17 @@ app.get('/spells', async (req, res) => {
 })
 
 app.get('/sortinghat', async (req, res) => {
-    let data = await HarryPotterData.getSortingHatData();
+    let house = await HarryPotterData.getSortingHatData();
     // fs.writeFileSync('./JsonFiles/sortingHat.json', data)
     // console.log(data);
-    let house = data
-
-    if (house == "Slytherin") {
-        console.log("Oh, Slytherin.");
-    } else if (house == "Ravenclaw") {
-        console.log("Oh, Ravenclaw.");
-    } else if (house == "Hufflepuff") {
-        console.log("Oh, Hufflepuff.");
-    } else if (house == "Gryffindor") {
-        console.log("Oh, Gryffindor.");
-    }
-
     res.render('sortinghat', {
-        house
+        house,
+        title: `You have been sorted into: ${house}`
     });
+
+    // res.render('sortinghat', {
+    //     house
+    // });
 })
 
 app.get('/signup', (req, res) => {

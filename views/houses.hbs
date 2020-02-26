@@ -1,14 +1,16 @@
 <h1>You can find any house here.</h1>
-
+{{#if err}}
+<p>{{err}}</p>
+{{else}}
 <ul class="lists">
-    {{#each houses}}
-    {{#each this}}
+    {{#each house}}
+    {{!-- {{#each this}} --}}
     <li>{{@key}} : {{this}}</li>
     <br>
-    {{/each}}
+    {{!-- {{/each}} --}}
     {{/each}}
 </ul>
-
+{{/if}}
 <form action="/houses" method="post">
     <label for="houses">Houses: </label>
     <input type="text" name="houses">
