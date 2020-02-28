@@ -1,1 +1,20 @@
 <h1>You can find any spell here.</h1>
+
+{{#if err}}
+<h2>{{err}}</h2>
+{{else}}
+
+<ul class="lists">
+    {{#each spell}}
+    <li>{{@key}} : {{this}}</li>
+    <br>
+    {{/each}}
+</ul>
+<br>
+{{/if}}
+<form action="/spells" method="POST">
+    <label for="spell">Spell: </label>
+    <input type="text" name="spells">
+    <br>
+    <input type="submit" value="Submit">
+</form>

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 // const fs = require('fs');
 const HarryPotterData = require('./lib/getHarryPotter')
-const HouseFunction = require('./lib/HouseFunction')
+// const HouseFunction = require('./lib/HouseFunction')
 const app = express();
 require('dotenv').config();
 
@@ -14,7 +14,6 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 // requiring the schema created in user.js. This currently holds name, email & password.
 const UserSchema = require('./models/user');
-
 // connection to the MongoDB Atlas cluster. Password stored in .env and useUnifiedTopology fixes warning given without.
 mongoose.connect(`mongodb+srv://admin:${process.env.password}@usersignup-0cehi.mongodb.net/userdb?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
@@ -152,6 +151,35 @@ app.get('/spells', async (req, res) => {
     // fs.writeFileSync('./JsonFiles/spellData.json', data)
     // console.log(data);
 })
+
+app.post('/spells', async (req, res) => {
+    let input = encodeURIComponent(req.body.spells);
+    console.log(input)
+    let data = await HarryPotterData.getSpellData(input);
+
+    let spells = [];
+
+    for (const item of data) {
+        spells.push({
+            spell: item.spell,
+            type: item.type,
+            effect: item.effect
+        });
+    }
+
+    for (const spell of spells) {
+        if (spell.spell == input) {
+            res.render('spells', {
+                spell
+            });
+            return;
+        }
+    }
+
+    res.render('spells', {
+        err: 'Nothing found.'
+    });
+});
 
 app.get('/sortinghat', async (req, res) => {
     let house = await HarryPotterData.getSortingHatData();
