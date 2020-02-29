@@ -2,15 +2,17 @@
 
 A test application with the Harry Potter API to display different endpoints. 
 
-## The idea
+## How to use the site
 
-The application will allow the user to search for characters, houses, spells and the like. Why would you want to do this? Well, why not? Harry Potter is cool. 
+There are a few different things you can do on the site. Let's take a walk through them.
 
-The user will eventually be able to log in and store information about themselves. Sessions will be added to the project.
+### Characters
 
-## Development
+### Spells
 
-This project will be being worked on alongside others, so development may not be as quick as other projects. 
+### Houses
+
+### Sorting hat
 
 ## Prerequisites
 
