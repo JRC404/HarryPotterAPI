@@ -7,6 +7,9 @@ A test application with the Harry Potter API to display different endpoints.
 There are a few different things you can do on the site. Let's take a walk through them.
 
 ### Characters
+You can search for any character that has been mentioned in the books / films, with full names only currently. 
+
+E.g. Ronald Weasley will return the character, whereas Ron Weasley will not. This is being worked on.
 
 ### Spells
 
