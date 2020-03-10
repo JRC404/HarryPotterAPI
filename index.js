@@ -109,6 +109,7 @@ app.get('/houses', async (req, res) => {
     res.render('houses')
 })
 
+
 app.post('/houses', async (req, res) => {
     let input = req.body.houses
     let data = await HarryPotterData.getHouseData();
